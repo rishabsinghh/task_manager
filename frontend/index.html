@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang ='en'>
+    <head>
+        <title>Task Manager</title>
+        <link rel ="stylesheet" href="css/style.css"
+    </head>
+    <body>
+        <div class = "header">
+            <h1>Todo List</h1>
+
+        <div class = "tasks">
+            <label for = "task-input">My Tasks</label>
+            <input type ="text" id = "task-input" placeholder="Write down your tasks" required> 
+            <button onclick="addTask()" id = "button">Create New Task</button>
+        </div>
+
+        <ol id="taskList" </ol>
+        
+    </div>
+
+    </body>
+
+    <script>
+    function addTask() 
+    {
+      const taskInput = document.getElementById('task-input');
+      const taskList = document.getElementById('taskList');
+
+      // Get the user input
+      const taskText = taskInput.value.trim();
+
+      // Check if the input is not empty
+      if (taskText !== '') 
+      {
+        // Create a new list item
+        const listItem = document.createElement('li');
+        //listItem.textContent = taskText;
+        const button = document.createElement('button');
+        button.textContent = 'Pending';
+
+        button.addEventListener('click', function() {
+        // Change text inside the button when clicked
+        button.textContent = 'Done!';
+        button.classList.add('clicked');
+        // Add your custom button functionality here
+      });
+
+      listItem.appendChild(document.createTextNode(taskText+ ' '));
+
+
+        listItem.appendChild(button);
+        // Append the new list item to the unordered list
+        taskList.appendChild(listItem);
+
+        // Clear the input field after adding the task
+        taskInput.value = '';
+      }
+    }
+    </script>
+</html>
